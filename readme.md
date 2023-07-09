@@ -41,3 +41,50 @@ npm run dev
 ├── tsconfig.json # typescript 配置文件
 └── vite.config.ts # vite 配置文件
 ```
+
+## 创建 react component
+
+创建一个 `Message`组件
+
+src\Message.tsx
+
+```tsx
+/* 
+文件后缀说明
+- tsx 用于 react 中的 component
+- ts  用于一般的 ts文件
+
+编写组件的方式
+- 函数 function （普遍使用，推荐）
+- 类 class 
+ */
+function Message() {
+	// JSX: JavaScript XML
+	// Converting tool:https://babeljs.io/repl
+	const name = "Nathan";
+	if (name) return <h1>Hello {name}</h1>;
+	return <h1>Hello React</h1>;
+}
+// 导出
+export default Message;
+```
+
+在组件 `App.tsx`中引入
+
+src\App.tsx
+
+```tsx
+import Message from "./Message";
+
+function App() {
+	return (
+		<div>
+			<Message />
+		</div>
+	);
+}
+export default App;
+```
+
+
+
