@@ -88,3 +88,51 @@ export default App;
 
 
 
+## React 工作原理
+
+在`App.tsx`组件中引入一个作为子组件的`Message.tsx`组件可以看作为如下的（右）的树形结构
+
+![image-20230710063129859](assets/readme-images/image-20230710063129859.png)
+
+而 React 中一个组件实际上是一个虚拟DOM（Virtual DOM），通过 ReactDom 转换为 真实 DOM（Real DOM ）。具体是通过对比前后的虚拟DOM的差异，选择渲染（转换）为真实 DOM。
+
+![image-20230710063405311](assets/readme-images/image-20230710063405311.png)
+
+
+
+上述的 `ReactDom`可以从 `package.json` 中查看
+
+```json
+"dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+},
+```
+
+代码层面的转换过程是在 `index.html`中引入了`main.tsx`文件，此文件中包含将组件从虚拟DOM 转为 真实 DOM 代码
+
+![image-20230710063641396](assets/readme-images/image-20230710063641396.png)
+
+完整代码如下：
+
+index.html
+
+```html
+<body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+</body>
+```
+
+
+
+src\main.tsx
+
+```tsx
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+)
+```
+
