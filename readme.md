@@ -61,7 +61,7 @@ src\Message.tsx
 function Message() {
 	// JSX: JavaScript XML
 	// Converting tool:https://babeljs.io/repl
-	const name = "Nathan";
+	const name = 'Nathan';
 	if (name) return <h1>Hello {name}</h1>;
 	return <h1>Hello React</h1>;
 }
@@ -74,7 +74,7 @@ export default Message;
 src\App.tsx
 
 ```tsx
-import Message from "./Message";
+import Message from './Message';
 
 function App() {
 	return (
@@ -86,19 +86,15 @@ function App() {
 export default App;
 ```
 
-
-
 ## React 工作原理
 
 在`App.tsx`组件中引入一个作为子组件的`Message.tsx`组件可以看作为如下的（右）的树形结构
 
 ![image-20230710063129859](assets/readme-images/image-20230710063129859.png)
 
-而 React 中一个组件实际上是一个虚拟DOM（Virtual DOM），通过 ReactDom 转换为 真实 DOM（Real DOM ）。具体是通过对比前后的虚拟DOM的差异，选择渲染（转换）为真实 DOM。
+而 React 中一个组件实际上是一个虚拟 DOM（Virtual DOM），通过 ReactDom 转换为 真实 DOM（Real DOM ）。具体是通过对比前后的虚拟 DOM 的差异，选择渲染（转换）为真实 DOM。
 
 ![image-20230710063405311](assets/readme-images/image-20230710063405311.png)
-
-
 
 上述的 `ReactDom`可以从 `package.json` 中查看
 
@@ -109,7 +105,7 @@ export default App;
 },
 ```
 
-代码层面的转换过程是在 `index.html`中引入了`main.tsx`文件，此文件中包含将组件从虚拟DOM 转为 真实 DOM 代码
+代码层面的转换过程是在 `index.html`中引入了`main.tsx`文件，此文件中包含将组件从虚拟 DOM 转为 真实 DOM 代码
 
 ![image-20230710063641396](assets/readme-images/image-20230710063641396.png)
 
@@ -119,8 +115,11 @@ index.html
 
 ```html
 <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+	<div id="root"></div>
+	<script
+		type="module"
+		src="/src/main.tsx"
+	></script>
 </body>
 ```
 
@@ -128,17 +127,17 @@ src\main.tsx
 
 ```tsx
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-)
+	<React.StrictMode>
+		<App />
+	</React.StrictMode>
+);
 ```
 
-## 创建 ListGroup组件
+## 创建 ListGroup 组件
 
-使用的 UI框架：https://getbootstrap.com/docs/5.3/getting-started/introduction/
+使用的 UI 框架：https://getbootstrap.com/docs/5.3/getting-started/introduction/
 
-安装 bootstrapUI框架
+安装 bootstrapUI 框架
 
 ```bash
 $ npm i bootstrap@5.2.3
@@ -153,7 +152,7 @@ src\main.tsx
 + import "bootstrap/dist/css/bootstrap.css";
 ```
 
-创建新的组件 ListGroup 
+创建新的组件 ListGroup
 
 src\components\ListGroup.tsx
 
@@ -188,3 +187,46 @@ function App() {
 export default App;
 ```
 
+## Fragment
+
+使用 Fragment 之前
+
+```jsx
+function ListGroup() {
+	return (
+		<h1>List Group</h1>
+		<ul className='list-group'>
+			<li className='list-group-item'>An item</li>
+			<li className='list-group-item'>A second item</li>
+			<li className='list-group-item'>A third item</li>
+			<li className='list-group-item'>A fourth item</li>
+			<li className='list-group-item'>And a fifth one</li>
+		</ul>
+	);
+}
+export default ListGroup;
+```
+
+使用 Fragment 之后
+
+```jsx
+import { Fragment } from 'react';
+
+function ListGroup() {
+	return (
+		<Fragment>
+			<h1>List Group</h1>
+			<ul className='list-group'>
+				<li className='list-group-item'>An item</li>
+				<li className='list-group-item'>A second item</li>
+				<li className='list-group-item'>A third item</li>
+				<li className='list-group-item'>A fourth item</li>
+				<li className='list-group-item'>And a fifth one</li>
+			</ul>
+		</Fragment>
+	);
+}
+export default ListGroup;
+```
+
+简单来说 `Fragment`就是一个特殊作用的标签，本身不作为 `DOm`渲染，作用是保证符合 React 语法——返回的组件的元素（标签）只有一个通过包裹已有的多个元素。
