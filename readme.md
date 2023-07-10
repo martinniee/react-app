@@ -230,3 +230,30 @@ export default ListGroup;
 ```
 
 简单来说 `Fragment`就是一个特殊作用的标签，本身不作为 `DOm`渲染，作用是保证符合 React 语法——返回的组件的元素（标签）只有一个通过包裹已有的多个元素。
+
+## 列表渲染
+
+```jsx
+import { Fragment } from 'react';
+
+function ListGroup() {
+	const citiesItems = [
+		'New York',
+		'San Francisco',
+		'Tokyo',
+		'London',
+		'Paris',
+	];
+	return (
+		<Fragment>
+			<h1>List Group</h1>
+			<ul className='list-group'>
+				{citiesItems.map((item) => (
+					<li key={item}>{item}</li>
+				))}
+			</ul>
+		</Fragment>
+	);
+}
+export default ListGroup;
+```
