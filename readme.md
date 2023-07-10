@@ -124,8 +124,6 @@ index.html
 </body>
 ```
 
-
-
 src\main.tsx
 
 ```tsx
@@ -134,5 +132,59 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <App />
     </React.StrictMode>,
 )
+```
+
+## 创建 ListGroup组件
+
+使用的 UI框架：https://getbootstrap.com/docs/5.3/getting-started/introduction/
+
+安装 bootstrapUI框架
+
+```bash
+$ npm i bootstrap@5.2.3
+```
+
+修改使用的样式文件，采用 bootstrap
+
+src\main.tsx
+
+```diff
+- import './index.css'
++ import "bootstrap/dist/css/bootstrap.css";
+```
+
+创建新的组件 ListGroup 
+
+src\components\ListGroup.tsx
+
+```jsx
+function ListGroup() {
+	return (
+		<ul className='list-group'>
+			<li className='list-group-item'>An item</li>
+			<li className='list-group-item'>A second item</li>
+			<li className='list-group-item'>A third item</li>
+			<li className='list-group-item'>A fourth item</li>
+			<li className='list-group-item'>And a fifth one</li>
+		</ul>
+	);
+}
+export default ListGroup;
+```
+
+修改组件从 Message 为 ListGroup
+
+src\App.tsx
+
+```jsx
+import ListGroup from './components/ListGroup';
+function App() {
+	return (
+		<div>
+			<ListGroup />
+		</div>
+	);
+}
+export default App;
 ```
 
