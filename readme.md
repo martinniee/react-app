@@ -257,3 +257,41 @@ function ListGroup() {
 }
 export default ListGroup;
 ```
+
+## 条件渲染
+
+```jsx
+import { Fragment } from 'react';
+
+function ListGroup() {
+	let citiesItems = ['New York', 'San Francisco', 'Tokyo', 'London', 'Paris'];
+	citiesItems = [];
+	return (
+		<Fragment>
+			<h1>List Group</h1>
+			{/* {citiesItems.length === 0 ? <p>No item found</p> : null} */}
+			{citiesItems.length === 0 && <p>No item found</p>}
+			<ul className='list-group'>
+				{citiesItems.map((item) => (
+					<li key={item}>{item}</li>
+				))}
+			</ul>
+		</Fragment>
+	);
+}
+export default ListGroup;
+```
+
+关于动态渲染的一个语法技巧：
+
+三元运算符：`C?A:null`
+
+等价于
+
+与逻辑运算：`C && A`
+
+上述的例子中是仅希望当条件（C）成立时，渲染 A 的结果，后面的`null`只是为了为了符合三元运算符的语法的补充。在这种情况下，利用逻辑与（&&）运算符的特性就很适合。
+
+对于 `A&&B`，当 A 为 true ，则返回 B，当 A 为 false ，则返回 A。
+
+当 A 即条件成立，则返回 B；当条件不成立，返回 A。对于上述的例子来说，条件成立就返回并渲染 `<p>`标签，不成立则返回 `false`，而 `false`不会渲染任何内容。
