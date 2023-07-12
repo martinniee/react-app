@@ -295,3 +295,38 @@ export default ListGroup;
 对于 `A&&B`，当 A 为 true ，则返回 B，当 A 为 false ，则返回 A。
 
 当 A 即条件成立，则返回 B；当条件不成立，返回 A。对于上述的例子来说，条件成立就返回并渲染 `<p>`标签，不成立则返回 `false`，而 `false`不会渲染任何内容。
+
+## 事件处理
+
+```diff
+import {
+Fragment,
++ MouseEvent
+} from 'react';
+
+function ListGroup() {
+	let citiesItems = ['New York', 'San Francisco', 'Tokyo', 'London', 'Paris'];
+	// citiesItems = [];
++	const handlerClick = (event: MouseEvent) => {
++		console.log(event);
++	};
+	return (
+		<Fragment>
+			<h1>List Group</h1>
+			{citiesItems.length === 0 && <p>No item found</p>}
+			<ul className='list-group'>
+				{citiesItems.map((item) => (
+					<li
++						className='list-group-item'
+						key={item}
++   					onClick={handlerClick}
+					>
+						{item}
+					</li>
+				))}
+			</ul>
+		</Fragment>
+	);
+}
+export default ListGroup;
+```
