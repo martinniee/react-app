@@ -1,7 +1,16 @@
-import { Fragment, MouseEvent, useState } from 'react';
-
-function ListGroup() {
-	let citiesItems = ['New York', 'San Francisco', 'Tokyo', 'London', 'Paris'];
+import { Fragment, useState } from 'react';
+interface Props {
+	items: string[];
+	heading: string;
+}
+/**
+ *
+ * @param param0
+ * items 列表项
+ * heading 标题
+ * @returns
+ */
+function ListGroup({ items, heading }: Props) {
 	/**
 	 * 创建 react 状态管理
 	 * useState(...) 返回数组，长度为2
@@ -11,10 +20,10 @@ function ListGroup() {
 	const [selectedIndex, setSelectedIndex] = useState(-1);
 	return (
 		<Fragment>
-			<h1>List Group</h1>
-			{citiesItems.length === 0 && <p>No item found</p>}
+			<h1>{heading}</h1>
+			{items.length === 0 && <p>No item found</p>}
 			<ul className='list-group'>
-				{citiesItems.map((item, index) => (
+				{items.map((item, index) => (
 					<li
 						className={
 							selectedIndex === index
