@@ -2,6 +2,7 @@ import { Fragment, useState } from 'react';
 interface Props {
 	items: string[];
 	heading: string;
+	onSelectItem: (item: string) => void;
 }
 /**
  *
@@ -10,7 +11,7 @@ interface Props {
  * heading 标题
  * @returns
  */
-function ListGroup({ items, heading }: Props) {
+function ListGroup({ items, heading, onSelectItem }: Props) {
 	/**
 	 * 创建 react 状态管理
 	 * useState(...) 返回数组，长度为2
@@ -31,7 +32,10 @@ function ListGroup({ items, heading }: Props) {
 								: 'list-group-item'
 						}
 						key={item}
-						onClick={() => setSelectedIndex(index)}
+						onClick={() => {
+							setSelectedIndex(index);
+							onSelectItem(item);
+						}}
 					>
 						{item}
 					</li>
