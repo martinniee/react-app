@@ -544,3 +544,16 @@ function ListGroup({ items, heading, onSelectItem }: Props) {
 }
 export default ListGroup;
 ```
+
+## Props VS State
+
+Props
+
+- immutable，类似函数参数，会重新渲染
+
+State
+
+- mutable，类似变量，会重新渲染
+
+
+
