@@ -555,5 +555,49 @@ State
 
 - mutable，类似变量，会重新渲染
 
+## 传递子组件
 
+>  视频中安装 VCode 扩展：
+>
+> - name : **VS Code ES7+ React/Redux/React-Native/JS snippets** 
+> - author : dsznajder
+> - description :  JavaScript and React/Redux snippets in ES7+ with Babel plugin features for [VS Code](https://code.visualstudio.com/)
+
+父组件
+
+src\App.tsx
+
+```jsx
+import Alert from './components/Alert';
+
+function App() {
+	return (
+		<div>
+			<Alert>
+				{/* 传递子节点 */}
+				Hello <span>React</span>
+			</Alert>
+		</div>
+	);
+}
+export default App;
+```
+
+子组件
+
+src\components\Alert.tsx
+
+```jsx
+// 快捷输入 rafce (React Arrow Function Component)
+import React, { ReactNode } from 'react';
+interface Props {
+	// 如果传递的是一个节点，则需要使用 ReactNode
+	children: ReactNode;
+}
+const Alert = ({ children }: Props) => {
+	return <div className='alert alert-primary'>{children}</div>;
+};
+
+export default Alert;
+```
 

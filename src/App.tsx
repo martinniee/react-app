@@ -1,18 +1,12 @@
-import ListGroup from './components/ListGroup';
-function App() {
-	let items = ['New York', 'San Francisco', 'Tokyo', 'London', 'Paris'];
-	const handleSelectItem = (item: String) => {
-		console.log(item);
-	};
+import Alert from './components/Alert';
 
+function App() {
 	return (
 		<div>
-			<ListGroup
-				// 传入参数
-				items={items}
-				heading='Cities'
-				onSelectItem={handleSelectItem}
-			/>
+			<Alert>
+				{/* 传递子节点 */}
+				Hello <span>React</span>
+			</Alert>
 		</div>
 	);
 }
