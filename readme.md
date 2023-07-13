@@ -4,8 +4,9 @@
 > -   作者：Programming with Mosh
 > -   时长：1:20:03
 > -   计划：1-2 天
-> -   周期：2023/07/10
+> -   周期：2023/07/10 ~ 2023/07/13
 > -   资源：
+> -   备注：居然花了 3 天，1 个多小时的视频。后续一定想办法提升效率 😭
 
 ## 创建 React app
 
@@ -389,7 +390,7 @@ function App() {
 export default App;
 ```
 
-## 通过Props传递数据
+## 通过 Props 传递数据
 
 父组件传参
 
@@ -424,11 +425,11 @@ interface Props {
 	heading: string;
 }
 /**
- * 
- * @param param0 
+ *
+ * @param param0
  * items 列表项
  * heading 标题
- * @returns 
+ * @returns
  */
 function ListGroup({ items, heading }: Props) {
 	/**
@@ -463,7 +464,7 @@ function ListGroup({ items, heading }: Props) {
 export default ListGroup;
 ```
 
-## 通过Props传递函数
+## 通过 Props 传递函数
 
 父组件传参
 
@@ -549,19 +550,19 @@ export default ListGroup;
 
 Props
 
-- immutable，类似函数参数，会重新渲染
+-   immutable，类似函数参数，会重新渲染
 
 State
 
-- mutable，类似变量，会重新渲染
+-   mutable，类似变量，会重新渲染
 
 ## 传递子组件
 
->  视频中安装 VCode 扩展：
+> 视频中安装 VCode 扩展：
 >
-> - name : **VS Code ES7+ React/Redux/React-Native/JS snippets** 
-> - author : dsznajder
-> - description :  JavaScript and React/Redux snippets in ES7+ with Babel plugin features for [VS Code](https://code.visualstudio.com/)
+> -   name : **VS Code ES7+ React/Redux/React-Native/JS snippets**
+> -   author : dsznajder
+> -   description : JavaScript and React/Redux snippets in ES7+ with Babel plugin features for [VS Code](https://code.visualstudio.com/)
 
 父组件
 
@@ -600,4 +601,3 @@ const Alert = ({ children }: Props) => {
 
 export default Alert;
 ```
-
