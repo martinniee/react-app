@@ -2,11 +2,6 @@
 
 > -   课程：[React Tutorial for Beginners - YouTube](https://www.youtube.com/watch?v=SqcY0GlETPk&t=0s&ab_channel=ProgrammingwithMosh)
 > -   作者：Programming with Mosh
-> -   时长：1:20:03
-> -   计划：1-2 天
-> -   周期：2023/07/10 ~ 2023/07/13
-> -   资源：
-> -   备注：居然花了 3 天，1 个多小时的视频。后续一定想办法提升效率 😭
 
 ## 创建 React app
 
